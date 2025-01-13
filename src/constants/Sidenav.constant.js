@@ -1,4 +1,8 @@
 import { Image, PencilRuler, Shield } from "lucide-react";
+import { icons } from "lucide-react";
+
+export const lucideIconNames = Object.keys(icons);
+
 
 export const sideNavMenu = [
     {
@@ -11,9 +15,9 @@ export const sideNavMenu = [
         name: 'Background',
         icon: Image
     },
-    {
-        id: 1,
-        name: 'Icon',
-        icon: Shield
-    }
+    // {
+    //     id: 1,
+    //     name: 'U',
+    //     icon: Shield
+    // }
 ]

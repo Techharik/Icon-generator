@@ -5,8 +5,8 @@ const SideNav = ({ setSelectedValue }) => {
     const [menuList, setMenuList] = useState(sideNavMenu)
     const [activeIndex, setActiveIndex] = useState(0)
     return (
-        <div>
-            <div>
+        <div className='flex justify-between flex-col  relative '>
+            <div className='flex-1 min-h-[500px]'>
                 {
                     menuList.map((menu, index) => {
                         return <div key={index}
@@ -22,6 +22,15 @@ const SideNav = ({ setSelectedValue }) => {
                         </div>
                     })
                 }
+            </div>
+            <div className='flex justify-center flex-col items-center gap-2 '>
+                <p>
+                    Powered By
+                </p>
+
+                <p>
+                    @techharik.in
+                </p>
             </div>
         </div >
     )

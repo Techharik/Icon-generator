@@ -48,7 +48,7 @@ const PreviewIcon = ({ download }) => {
         <div className="flex justify-center items-center pt-10">
             <div
                 id="canv"
-                className="w-[512px] h-[512px] border"
+                className="w-[512px] h-[512px] bg-slate-100"
                 style={{
                     padding: typeof bgValue.padding === "number" ? `${bgValue.padding}px` : bgValue.padding || "0px",
                 }}

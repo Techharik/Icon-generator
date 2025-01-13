@@ -12,7 +12,6 @@ const BackgroundControler = () => {
     const { setIconUpdate } = useContext(IconContext);
 
     useEffect(() => {
-
         const updatedValue = {
             ...storagevalue,
             rounded: roundedValue,
@@ -23,6 +22,7 @@ const BackgroundControler = () => {
         setIconUpdate(updatedValue)
         localStorage.setItem('bgset', JSON.stringify(updatedValue))
     }, [roundedValue, paddingValue, color])
+
     return (
         <div>
             <div className='flex flex-col gap-4 '>
