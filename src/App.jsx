@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from './components/ui/button'
 import Header from './components/lib/Header'
 import SideNav from './components/lib/SideNav'
@@ -8,24 +8,26 @@ import BackgroundControler from './components/lib/BackgroundControler'
 
 const App = () => {
   const [selectedValue, setSelectedValue] = useState(0)
+  const [download, setDownload] = useState(false)
+
 
   return (
     <div className=''>
-      <Header />
+      <Header setDownload={setDownload} download={download} />
       <div className='w-64 fixed border-r border-slate-200  min-h-screen'>
-        <SideNav />
+        <SideNav setSelectedValue={setSelectedValue} />
       </div>
       <div className='fixed min-w-full -z-10 '>
 
         <div className='ml-64  flex h-screen  '>
           <div className='min-w-[350px] p-5 overflow-auto pb-40 border-r'>
             {
-              setSelectedValue == 0 ? <IconControler /> : <BackgroundControler />
+              selectedValue == 0 ? <IconControler /> : <BackgroundControler />
             }
           </div>
 
           <div className='flex-1'>
-            <PreviewIcon />
+            <PreviewIcon download={download} />
           </div>
           <div className='min-w-[150px] bg-green-200'>
             Ads

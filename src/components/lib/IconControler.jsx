@@ -7,7 +7,8 @@ import { IconContext } from '@/context/UpdateStore'
 const IconControler = () => {
     const storagevalue = JSON.parse(localStorage.getItem('iconSet'))
     const [sizeValue, setSizeValue] = useState(storagevalue?.iconSize || 230)
-    const [rotateValue, setRotateValue] = useState(storagevalue?.rotate || 0);
+    const [rotateValue, setRotateValue] = useState(
+        0);
     const [color, setColor] = useState(storagevalue?.iconColor || '#fff')
     const { setIconUpdate } = useContext(IconContext);
 
@@ -55,7 +56,7 @@ const IconControler = () => {
                     <div className='flex justify-between'>
                         Icon Color
                     </div>
-                    <ColorPickerComp selectedColor={setColor} />
+                    <ColorPickerComp hideControler={true} selectedColor={setColor} />
                 </div>
             </div>
         </div>

@@ -1,7 +1,7 @@
 import { sideNavMenu } from '@/constants/Sidenav.constant'
 import React, { useState } from 'react'
 
-const SideNav = () => {
+const SideNav = ({ setSelectedValue }) => {
     const [menuList, setMenuList] = useState(sideNavMenu)
     const [activeIndex, setActiveIndex] = useState(0)
     return (
@@ -11,7 +11,11 @@ const SideNav = () => {
                     menuList.map((menu, index) => {
                         return <div key={index}
                             className={`p-3  flex gap-4 items-start my-2 text-slate-500 hover:bg-primary hover:text-white cursor-pointer mt-5 rounded-r-xl  transition-all duration-100 ${activeIndex === index && 'bg-primary text-white '}`}
-                            onClick={() => setActiveIndex(index)}
+                            onClick={() => {
+                                setActiveIndex(index);
+                                setSelectedValue(index)
+                            }
+                            }
                         >
                             <menu.icon />
                             {menu.name}
@@ -19,7 +23,7 @@ const SideNav = () => {
                     })
                 }
             </div>
-        </div>
+        </div >
     )
 }
 

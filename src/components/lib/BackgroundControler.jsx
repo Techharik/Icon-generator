@@ -5,37 +5,49 @@ import ColorPickerComp from './ColorPicker'
 import { IconContext } from '@/context/UpdateStore'
 
 const BackgroundControler = () => {
-    const storagevalue = JSON.parse(localStorage.getItem('iconSet'))
-    const [sizeValue, setSizeValue] = useState(storagevalue?.iconSize || 230)
-    const [rotateValue, setRotateValue] = useState(storagevalue?.rotate || 0);
-    const [color, setColor] = useState(storagevalue?.iconColor || '#fff')
+    const storagevalue = JSON.parse(localStorage.getItem('bgset'))
+    const [roundedValue, setRoundedValue] = useState(storagevalue?.rounded || 0)
+    const [paddingValue, setPaddingValue] = useState(storagevalue?.padding || 0);
+    const [color, setColor] = useState(storagevalue?.bgcolur)
     const { setIconUpdate } = useContext(IconContext);
 
+    useEffect(() => {
+
+        const updatedValue = {
+            ...storagevalue,
+            rounded: roundedValue,
+            padding: paddingValue,
+            bgcolur: color,
+
+        }
+        setIconUpdate(updatedValue)
+        localStorage.setItem('bgset', JSON.stringify(updatedValue))
+    }, [roundedValue, paddingValue, color])
     return (
         <div>
             <div className='flex flex-col gap-4 '>
 
                 <div className='flex gap-3 flex-col ' >
                     <div className='flex justify-between'>
-                        <span>Rounded</span> <span>{sizeValue} px</span>
+                        <span>Rounded</span> <span>{roundedValue} px</span>
                     </div>
-                    <Slider defaultValue={[sizeValue]} max={512} step={1}
-                        onValueChange={(e) => setSizeValue(e[0])}
+                    <Slider defaultValue={[roundedValue]} max={100} step={1}
+                        onValueChange={(e) => setRoundedValue(e[0])}
                     />
                 </div>
                 <div className='flex gap-3 flex-col ' >
                     <div className='flex justify-between'>
-                        <span>Rotate</span> <span>{rotateValue} °</span>
+                        <span>Padding</span> <span>{paddingValue} px</span>
                     </div>
-                    <Slider defaultValue={[rotateValue]} max={360} step={1}
-                        onValueChange={(e) => setRotateValue(e[0])}
+                    <Slider defaultValue={[paddingValue]} max={100} step={1}
+                        onValueChange={(e) => setPaddingValue(e[0])}
                     />
                 </div>
                 <div className='flex gap-3 flex-col ' >
                     <div className='flex justify-between'>
-                        Icon Color
+                        Background Color
                     </div>
-                    <ColorPickerComp selectedColor={setColor} />
+                    <ColorPickerComp selectedColor={setColor} hideControler={false} />
                 </div>
             </div>
         </div>
