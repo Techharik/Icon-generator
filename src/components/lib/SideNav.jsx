@@ -29,7 +29,9 @@ const SideNav = ({ setSelectedValue }) => {
                 </p>
 
                 <p>
-                    @techharik.in
+                    <a href="https://www.techharik.in/" className='text-blue-500 text-sm' target='_blank'>
+                        @techharik.in
+                    </a>
                 </p>
             </div>
         </div >

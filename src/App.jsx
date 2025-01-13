@@ -29,8 +29,9 @@ const App = () => {
           <div className='flex-1 min-w-[600px]'>
             <PreviewIcon download={download} />
           </div>
-          <div className='min-w-[100px] h-full w-[300px]'>
-            <img src={banner} alt="" className='h-full w-full' />
+          <div className='min-w-[100px] h-full w-[200px] relative'>
+            <div className='absolute bg-slate-300 h-full z-30 w-full bg-opacity-50 backdrop-blur-lg'></div>
+            <img src={banner} alt="" className='h-full w-full z-10' />
           </div>
 
         </div >
